@@ -36,7 +36,7 @@
                 <div id="rec-status" class="rec-indicator"><div class="rec-dot"></div> REC</div>
 
                 <!-- Host only shows the code; participants will see meeting title instead -->
-                <div id="display-code">Code: ---</div>
+                <div id="display-code">Meeting</div>
 
                 <button id="copy-btn" class="ctrl-btn" style="padding:5px 10px; font-size:11px;" onclick="copyCode()">Copy Code</button>
             </div>
@@ -71,7 +71,10 @@
                 </div>
                 <div id="chat-messages" style="flex:1; overflow-y:auto; padding:10px;"></div>
                 <div id="chat-input-container" style="padding:10px; border-top:1px solid #eee; display:flex; gap:5px;">
-                    <input type="text" id="chat-input" placeholder="Type..." onkeypress="handleChat(event)" style="flex:1;">
+                    <input type="text" id="chat-input" placeholder="Type a message..."
+       onkeypress="handleChat(event)"
+       onclick="this.focus()"
+       style="flex:1; padding: 8px; font-size: 14px;">
                     <label for="file-input" style="cursor:pointer; padding:5px;">📎</label>
                     <input type="file" id="file-input" style="display:none;" onchange="sendFile(this)">
                 </div>
@@ -80,5 +83,6 @@
     </div>
 
     <script src="/static/js/script.js"></script>
+
 </body>
 </html>
