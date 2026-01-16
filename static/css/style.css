@@ -171,3 +171,356 @@ video {
     border: 1px dashed var(--blue); margin-top: 5px; display: block;
     text-decoration: none; color: var(--blue); font-size: 12px;
 }
+
+/* Loading states */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Better mobile responsiveness */
+@media (max-width: 768px) {
+    .auth-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-auto-rows: 180px;
+        padding: 60px 10px 80px 10px;
+    }
+
+    #video-grid.solo {
+        grid-auto-rows: calc(100vh - 50px - 70px - 20px);
+    }
+
+    .ctrl-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .floating-panel {
+        width: 280px;
+        height: 400px;
+        right: 10px !important;
+        bottom: 90px !important;
+    }
+}
+
+/* Improve video container focus */
+.video-container:focus-within {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+}
+
+/* Better error states */
+.error-message {
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 14px;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Smooth transitions */
+.video-container, .ctrl-btn, .floating-panel {
+    transition: all 0.3s ease;
+}
+
+/* Optimize grid for different screen sizes */
+@media (min-width: 1200px) {
+    #video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-auto-rows: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    #controls {
+        height: 70px;
+        gap: 8px;
+        padding: 0 5px;
+    }
+
+    .ctrl-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    #room-header {
+        padding: 0 10px;
+        font-size: 14px;
+    }
+
+    .app-logo {
+        width: 100px;
+    }
+}
+
+/* Fix for solo mode video sizing */
+#video-grid.solo .video-container video {
+    object-fit: contain !important;
+    background: #000;
+}
+
+/* Ensure proper video aspect ratio */
+.video-container {
+    aspect-ratio: 16/9;
+}
+
+#video-grid.solo .video-container {
+    aspect-ratio: unset;
+}
+
+/* Fix for chat input focus */
+#chat-input:focus {
+    outline: 2px solid var(--blue);
+    outline-offset: -2px;
+}
+
+/* Make all inputs focusable */
+input:focus, button:focus {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+}
+
+/* Better video container styling */
+.video-container video {
+    transform: scaleX(1); /* Fix for mirrored video */
+}
+
+/* Fix for solo mode */
+#video-grid.solo .video-container {
+    max-width: 100vw;
+    max-height: calc(100vh - 130px);
+    margin: 0 auto;
+}
+
+/* Screen share owner info */
+.screen-owner-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 10;
+}
+
+/* Better participant panel */
+#participant-panel .panel-header {
+    font-weight: bold;
+}
+
+.p-row {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.p-row:last-child {
+    border-bottom: none;
+}
+
+/* Fix for chat panel */
+#chat-panel {
+    z-index: 1001;
+}
+
+#chat-input {
+    min-height: 36px;
+}
+
+/* Fix scrolling issue on video containers */
+.video-container {
+    overflow: hidden !important;
+    touch-action: none;
+}
+
+.video-container video {
+    pointer-events: none;
+}
+
+/* Fix for control buttons */
+.ctrl-btn {
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+/* Fix share button colors */
+.ctrl-btn.share {
+    background: #28a745;
+    transition: background 0.3s ease;
+}
+
+.ctrl-btn.share:hover {
+    background: #218838;
+}
+
+/* When sharing is active */
+.ctrl-btn.share[style*="background: #ea4335"] {
+    background: #ea4335 !important;
+}
+
+.ctrl-btn.share[style*="background: #ea4335"]:hover {
+    background: #d3342d !important;
+}
+
+/* Prevent body scrolling when in meeting */
+#meeting-room {
+    overflow: hidden;
+}
+
+#video-grid {
+    overscroll-behavior: none;
+}
+
+/* Better video grid layout */
+#video-grid:not(.solo) {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 10px;
+    padding: 70px 15px 100px 15px;
+}
+
+/* Fix for hand badge visibility */
+.hand-badge {
+    z-index: 100 !important;
+    pointer-events: none;
+}
+
+/* Make participant panel more visible */
+#participant-panel {
+    z-index: 1001;
+    background: white;
+    border: 1px solid #ddd;
+}
+
+.p-row {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.panel-header {
+    font-weight: bold;
+    font-size: 16px;
+    background: var(--blue);
+    color: white;
+}
+
+/* Fix for video placeholders */
+.video-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--blue), var(--light-blue));
+    color: white;
+    font-weight: 500;
+}
+
+.initials-circle {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Better mobile touch targets */
+@media (max-width: 768px) {
+    .ctrl-btn {
+        padding: 10px 15px;
+        font-size: 13px;
+        min-height: 44px; /* Minimum touch target size */
+    }
+
+    #video-grid:not(.solo) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-auto-rows: 150px;
+    }
+}
+
+/* Console message styling */
+.console-log {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.8);
+    color: #0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 12px;
+    z-index: 9999;
+    display: none;
+}
+
+/* Better button states */
+.ctrl-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Screen sharing indicator on video placeholder */
+.video-placeholder small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* Confirmation dialog styling */
+.confirm-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    text-align: center;
+    min-width: 300px;
+}
+
+.confirm-dialog button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.confirm-dialog button:first-of-type {
+    background: #28a745;
+    color: white;
+}
+
+.confirm-dialog button:last-of-type {
+    background: #dc3545;
+    color: white;
+}
